@@ -2,5 +2,16 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#2b2b2b</color>
+    <!-- Transparent background for buttons -->
+    <color name="transparent">#00222222</color>
+    <color name="black">#00000000</color>
+    <!-- Color background for mood states -->
+    <color name="sad">#D6ED3C3C</color>
+    <color name="disappointed">#FF7E7E7E</color>
+    <color name="normal">#E01D97A7</color>
+    <color name="happy">#C679D131</color>
+    <color name="superhappy">#FFEEDD11</color>
+    <!-- Background color for history view -->
+    <color name="history">#bfbfbf</color>
 </resources>
