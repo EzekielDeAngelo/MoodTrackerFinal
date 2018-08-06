@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".view.ui.MainActivity"
     android:id="@+id/fragment_container">
     <!-- Main screen color background -->
     <ImageView
@@ -24,6 +24,7 @@
     <!-- Main screen button to add a daily note -->
     <ImageButton
         android:id="@+id/add_note"
+        android:onClick="addNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
@@ -33,6 +34,7 @@
     <!-- Main screen button to show the mood history -->
     <ImageButton
         android:id="@+id/show_history"
+        android:onClick="showHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
