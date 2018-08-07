@@ -18,7 +18,8 @@ import java.util.List;
 @Database(entities = {MoodEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase
 {
-    private static AppDatabase sInstance;
+    public abstract MoodDao moodDao();
+    /*private static AppDatabase sInstance;
     public static final String DATABASE_NAME = "mooddb";
     public abstract MoodDao moodDao();
     private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
@@ -66,7 +67,7 @@ public abstract class AppDatabase extends RoomDatabase
     /**
      * Check whether the database already exists and expose it via {@link #getDatabaseCreated()}
      */
-    private void updateDatabaseCreated ( final Context context){
+   /* private void updateDatabaseCreated ( final Context context){
         if (context.getDatabasePath(DATABASE_NAME).exists()) {
             setDatabaseCreated();
         }
@@ -93,6 +94,6 @@ public abstract class AppDatabase extends RoomDatabase
 
     public LiveData<Boolean> getDatabaseCreated () {
         return mIsDatabaseCreated;
-    }
+    }*/
 }
 
