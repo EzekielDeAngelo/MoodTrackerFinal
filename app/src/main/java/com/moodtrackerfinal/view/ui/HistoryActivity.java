@@ -1,58 +1,48 @@
 package com.moodtrackerfinal.view.ui;
-
+/****/
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.moodtrackerfinal.R;
+import com.moodtrackerfinal.db.entity.MoodEntity;
 import com.moodtrackerfinal.view.adapter.MoodAdapter;
 import com.moodtrackerfinal.viewmodel.MoodListViewModel;
 
+import java.util.List;
+/****/
 public class HistoryActivity extends MainActivity
 {
-    private MoodListViewModel viewModel;
-    private MoodAdapter adapter;
+    private MoodListViewModel mViewModel;
     private RecyclerView recyclerView;
+    //
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
-        adapter = new MoodAdapter(moodList);
-        recyclerView = (RecyclerView) findViewById(R.id.mood_list);
+
+        final MoodAdapter adapter = new MoodAdapter();
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setAdapter(adapter);
-    }
-    public void setRowsText(MoodAdapter.MoodHolder holder, int position)
-    {
-        switch (position)
+
+        mViewModel = ViewModelProviders.of(this).get(MoodListViewModel.class);
+        mViewModel.getAllMoods().observe(this, new Observer<List<MoodEntity>>()
         {
-            case 0:
-                holder.moodColor.setText("One week ago");
-                break;
-            case 1:
-                holder.moodColor.setText("Six days ago");
-                break;
-            case 2:
-                holder.moodColor.setText("Five days ago");
-                break;
-            case 3:
-                holder.moodColor.setText("Four days ago");
-                break;
-            case 4:
-                holder.moodColor.setText("Three days ago");
-                break;
-            case 5:
-                holder.moodColor.setText("Two days ago");
-                break;
-            case 6:
-                holder.moodColor.setText("One day ago");
-                break;
-        }
-    }
-    private void initUI()
-    {
-
-
+            @Override
+            public void onChanged(@Nullable List<MoodEntity> moods)
+            {
+                if (moods != null)
+                {
+                    adapter.setMoods(moods);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "No data", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

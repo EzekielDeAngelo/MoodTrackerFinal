@@ -2,34 +2,34 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "580554e7d2727c0ee276fa28497fdb87",
+    "identityHash": "ac0c1d3cabe7562cf5fff28294f1e5a4",
     "entities": [
       {
-        "tableName": "moods",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `moodName` TEXT, `moodNote` TEXT)",
+        "tableName": "mood_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` INTEGER NOT NULL, `note` TEXT)",
         "fields": [
           {
-            "fieldPath": "id",
-            "columnName": "id",
+            "fieldPath": "mId",
+            "columnName": "mId",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "name",
-            "columnName": "moodName",
-            "affinity": "TEXT",
-            "notNull": false
+            "fieldPath": "mName",
+            "columnName": "name",
+            "affinity": "INTEGER",
+            "notNull": true
           },
           {
-            "fieldPath": "note",
-            "columnName": "moodNote",
+            "fieldPath": "mNote",
+            "columnName": "note",
             "affinity": "TEXT",
             "notNull": false
           }
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "mId"
           ],
           "autoGenerate": true
         },
@@ -39,7 +39,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"580554e7d2727c0ee276fa28497fdb87\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"ac0c1d3cabe7562cf5fff28294f1e5a4\")"
     ]
   }
 }

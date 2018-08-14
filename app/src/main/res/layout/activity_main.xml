@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.ui.MainActivity"
-    android:id="@+id/fragment_container">
+    >
+
+    <!--<include layout="@layout/activity_history" />-->
     <!-- Main screen color background -->
     <ImageView
         android:id="@+id/mood_color"
@@ -41,4 +43,6 @@
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@color/transparent"
         android:src="@drawable/ic_show_history"/>
+
+
 </android.support.design.widget.CoordinatorLayout>

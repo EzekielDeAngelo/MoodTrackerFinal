@@ -1,38 +1,43 @@
 package com.moodtrackerfinal.db;
+/****/
+import android.os.AsyncTask;
 
+import com.moodtrackerfinal.db.dao.MoodDao;
 import com.moodtrackerfinal.db.entity.MoodEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-/**
- * Generates data to pre-populate the database
- */
-public class DataGenerator
+/**Generates data to pre-populate the database**/
+public class DataGenerator extends AsyncTask<Void,Void,Void>
 {
-
-    private static final String[] FIRST = new String[]{
-            "Special edition", "New", "Cheap", "Quality", "Used"};
-    private static final String[] SECOND = new String[]{
-            "Three-headed Monkey", "Rubber Chicken", "Pint of Grog", "Monocle"};
-    private static final String[] DESCRIPTION = new String[]{
-            "is finally here", "is recommended by Stan S. Stanman",
-            "is the best sold product on Mêlée Island", "is \uD83D\uDCAF", "is ❤️", "is fine"};
-    private static final String[] COMMENTS = new String[]{
-            "Comment 1", "Comment 2", "Comment 3", "Comment 4", "Comment 5", "Comment 6"};
-
-    public static List<MoodEntity> generateProducts()
+    private final MoodDao mDao;
+    DataGenerator(AppDatabase db)
     {
-        List<MoodEntity> products = new ArrayList<>(FIRST.length * SECOND.length);
-        for (int i = 0; i < FIRST.length; i++) {
-            for (int j = 0; j < SECOND.length; j++) {
-                MoodEntity mood = new MoodEntity();
-                mood.setName(FIRST[i] + " " + SECOND[j]);
-                mood.setNote(mood.getName() + " " + DESCRIPTION[j]);
-                mood.setId(FIRST.length * i + j + 1);
-                products.add(mood);
-            }
-        }
-        return products;
+        mDao = db.moodDao();
+    }
+    //
+    @Override
+    protected Void doInBackground(final Void... params)
+    {
+        //mDao.deleteAll();
+        MoodEntity mood = new MoodEntity(8,3,"");
+        mDao.insert(mood);
+        mood = new MoodEntity(1,3,"I had a nice day");
+        mDao.insert(mood);
+        mood = new MoodEntity(2,2,"I had a not so nice day");
+        mDao.insert(mood);
+        mood = new MoodEntity(3,1,"");
+        mDao.insert(mood);
+        mood = new MoodEntity(4,4,"I had a wonderful day");
+        mDao.insert(mood);
+        mood = new MoodEntity(5,5,"I had an amazing day");
+        mDao.insert(mood);
+        mood = new MoodEntity(6,3,"I had an average day");
+        mDao.insert(mood);
+        mood = new MoodEntity(7,4,"MAIS OUI");
+        mDao.insert(mood);
+        return null;
     }
 }

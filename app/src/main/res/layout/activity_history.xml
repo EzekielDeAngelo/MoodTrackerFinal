@@ -7,22 +7,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.ui.HistoryActivity"
-    android:background="?android:attr/selectableItemBackground"
-    android:clickable="true"
-    android:focusable="true"
-    android:orientation="vertical"
-    android:id="@+id/activity_history">
-    <!-- Recycler view -->
+    tools:context=".view.ui.MainActivity"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+
+
+    >
+
+
     <android.support.v7.widget.RecyclerView
-    android:id="@+id/mood_list"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-    android:scrollbars="vertical"
-    android:background="@color/history"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    />
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+    android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"
+        tools:listitem="@layout/mood_item"
+
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        app:reverseLayout="true"
+
+        />
+    <!--LAYOUT    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"-->
+
+
+    <!--RECYCLERVIEW  android:layout_height="0dp"
+
+        android:scrollbars="vertical"
+        android:background="@color/history"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"-->
 </android.support.constraint.ConstraintLayout>
+
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+</FrameLayout>-->

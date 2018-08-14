@@ -6,6 +6,10 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.widget.Toast;
+
+import com.moodtrackerfinal.view.ui.MainActivity;
+
 /****/
 public class OnSwipeTouchListener implements OnTouchListener
 {
@@ -64,6 +68,7 @@ public class OnSwipeTouchListener implements OnTouchListener
     //
     public void onSwipeRight()
     {
+
     }
     public void onSwipeLeft()
     {
