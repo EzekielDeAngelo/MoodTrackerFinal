@@ -26,15 +26,14 @@ public interface MoodDao
     @Insert(onConflict = IGNORE)
     void insert(MoodEntity mood);
     //
-    @Insert
-    //void insertAll(MoodEntity ... moods);
-    void insertAll(List<MoodEntity> moods);
-    //
     @Update
     void update(MoodEntity ... mood);
     //
     @Query("DELETE FROM mood_table")
     void deleteAll();
+    //
+    @Query("select * from mood_table where mId = :id")
+    MoodEntity load(int id);
     //
     //@Delete
     //void delete(MoodEntity mood);

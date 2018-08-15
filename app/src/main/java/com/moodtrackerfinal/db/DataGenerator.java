@@ -36,7 +36,7 @@ public class DataGenerator extends AsyncTask<Void,Void,Void>
         mDao.insert(mood);
         mood = new MoodEntity(6,3,"I had an average day");
         mDao.insert(mood);
-        mood = new MoodEntity(7,4,"MAIS OUI");
+        mood = new MoodEntity(7,4,"");
         mDao.insert(mood);
         return null;
     }

@@ -43,6 +43,17 @@
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@color/transparent"
         android:src="@drawable/ic_show_history"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="scheduleJob"/>
+
+    <Button
+        android:onClick="cancelJob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_32sdp"
+        />
 
 
 </android.support.design.widget.CoordinatorLayout>

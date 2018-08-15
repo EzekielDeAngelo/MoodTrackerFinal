@@ -32,11 +32,14 @@ public class MoodListViewModel extends AndroidViewModel
     {
         return mMood;
     }
+
     //
     public void update(MoodEntity mood)
     {
         mRepository.update(mood);
     }
+
+
     /*public void insert(MoodEntity mood)
     {
         mRepository.insert(mood);

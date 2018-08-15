@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.moodtrackerfinal">
-
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.ACCESS NETWORK STATE" />
-
     <application
-
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        //
+        // MainActivity registration
         <activity
             android:name=".view.ui.MainActivity"
             android:label="@string/app_name"
@@ -23,8 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        //
-        <activity android:name=".view.ui.HistoryActivity"
+        // HistoryActivity registration
+        <activity
+            android:name=".view.ui.HistoryActivity"
             android:parentActivityName=".view.ui.MainActivity"
             android:label="History"
             android:theme="@style/AppTheme.NoActionBar">
@@ -32,5 +31,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.ui.MainActivity"/>
         </activity>
+        // MoodJobService registration
+        <service
+            android:name=".MoodJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE">
+        </service>
     </application>
 </manifest>

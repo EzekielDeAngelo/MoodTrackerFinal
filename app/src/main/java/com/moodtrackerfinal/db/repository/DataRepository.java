@@ -8,6 +8,7 @@ import com.moodtrackerfinal.AppExecutors;
 import com.moodtrackerfinal.db.AppDatabase;
 import com.moodtrackerfinal.db.dao.MoodDao;
 import com.moodtrackerfinal.db.entity.MoodEntity;
+import com.moodtrackerfinal.model.Mood;
 
 import java.util.List;
 /****/
@@ -19,6 +20,7 @@ public class DataRepository
     private MoodDao mMoodDao;
     //private static DataRepository sInstance;
     private AppExecutors executors;
+
     public DataRepository(Application application)
     {
         executors = new AppExecutors();
@@ -26,6 +28,7 @@ public class DataRepository
         mMoodDao = db.moodDao();
         mAllMoods = mMoodDao.getAllMoods();
         mMood = mMoodDao.getMood();
+
     }
     //
     public LiveData<List<MoodEntity>> getAllMoods()
@@ -42,6 +45,14 @@ public class DataRepository
     {
         new updateAsyncTask(mMoodDao).execute(mood);
     }
+
+    public MoodEntity load(int i)
+    {
+        MoodEntity mood = mMoodDao.load(i);
+        return mood;
+    }
+    //
+
     //
     private static class updateAsyncTask extends AsyncTask<MoodEntity,Void,Void>
     {
@@ -53,10 +64,12 @@ public class DataRepository
         @Override
         protected Void doInBackground(final MoodEntity... params)
         {
+
             mAsyncTaskDao.update(params[0]);
             return null;
         }
     }
+
     //
     /*public void insert(MoodEntity mood)
     {
