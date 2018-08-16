@@ -1,5 +1,5 @@
 package com.moodtrackerfinal.view.ui;
-/****/
+/** History activity class **/
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -13,12 +13,13 @@ import com.moodtrackerfinal.view.adapter.MoodAdapter;
 import com.moodtrackerfinal.viewmodel.MoodListViewModel;
 
 import java.util.List;
-/****/
+/** Handles UI for history activity **/
 public class HistoryActivity extends MainActivity
 {
     private MoodListViewModel mViewModel;
     private RecyclerView recyclerView;
-    //
+    // Override onCreate method - Create recyclerView, set his adapter and observe viewModel
+    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);

@@ -5,10 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ui.MainActivity"
-    >
-
-    <!--<include layout="@layout/activity_history" />-->
+    tools:context=".view.ui.MainActivity">
     <!-- Main screen color background -->
     <ImageView
         android:id="@+id/mood_color"
@@ -43,17 +40,9 @@
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@color/transparent"
         android:src="@drawable/ic_show_history"/>
+    <!-- Schedule job test button -->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="scheduleJob"/>
-
-    <Button
-        android:onClick="cancelJob"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_32sdp"
-        />
-
-
 </android.support.design.widget.CoordinatorLayout>

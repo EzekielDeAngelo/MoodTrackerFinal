@@ -1,37 +1,30 @@
 package com.moodtrackerfinal;
-/****/
+/** App executors class **/
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-/****/
-/**
- * Global executor pools for the whole application.
- * <p>
- * Grouping tasks like this avoids the effects of task starvation (e.g. disk reads don't wait behind
- * webservice requests).
- */
+/** Global executor pools for the whole application, avoid the effects of task starvation **/
 public class AppExecutors
 {
     private final Executor mDiskIO;
     private final Executor mNetworkIO;
     private final Executor mMainThread;
-    //
+
     private AppExecutors(Executor diskIO, Executor networkIO, Executor mainThread)
     {
         this.mDiskIO = diskIO;
         this.mNetworkIO = networkIO;
         this.mMainThread = mainThread;
     }
-    //
+    // Constructor
     public AppExecutors()
     {
-        this(Executors.newSingleThreadExecutor(), Executors.newFixedThreadPool(3),
-                new MainThreadExecutor());
+        this(Executors.newSingleThreadExecutor(), Executors.newFixedThreadPool(3), new MainThreadExecutor());
     }
-    //
+    // Executor methods
     public Executor diskIO() {
         return mDiskIO;
     }
@@ -41,7 +34,7 @@ public class AppExecutors
     public Executor mainThread() {
         return mMainThread;
     }
-    //
+    // Main thread executor class
     private static class MainThreadExecutor implements Executor
     {
         private Handler mainThreadHandler = new Handler(Looper.getMainLooper());
