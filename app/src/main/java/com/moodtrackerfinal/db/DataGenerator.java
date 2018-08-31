@@ -21,7 +21,7 @@ public class DataGenerator extends AsyncTask<Void,Void,Void>
     @Override
     protected Void doInBackground(final Void... params)
     {
-        MoodEntity mood = new MoodEntity(8,3,"");
+        MoodEntity mood = new MoodEntity(0,4 ,"");
         mDao.insert(mood);
         mood = new MoodEntity(1,3,"I had a nice day");
         mDao.insert(mood);

@@ -34,6 +34,7 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodHolder>
     private int height;
     private int width;
     private int screenWidth;
+    private int viewsCount = 7;
     private List<? extends MoodEntity> mMoods;
     public MoodAdapter() {}
     // Override onCreateViewHolder method - Creates new views (invoked by the layout manager)
@@ -46,7 +47,7 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodHolder>
         screenWidth = displayMetrics.widthPixels;
         int screenHeight = displayMetrics.heightPixels;
         width = screenWidth / 5;
-        height = screenHeight / 7;
+        height = screenHeight / viewsCount;
         return new MoodHolder(itemView);
     }
     // Override onBindViewHolder method - Replace the contents of a view
@@ -81,7 +82,7 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodHolder>
         {
             holder.moodColor.setText("No data");
         }
-        if (position == 7)
+        if (position == viewsCount)
         {
             RecyclerView.LayoutParams param = (RecyclerView.LayoutParams)holder.itemView.getLayoutParams();
             holder.itemView.setVisibility(View.GONE);

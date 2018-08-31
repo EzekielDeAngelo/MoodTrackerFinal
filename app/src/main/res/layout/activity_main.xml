@@ -11,15 +11,15 @@
         android:id="@+id/mood_color"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/normal"/>
+        android:background="@color/happy"/>
     <!-- Smiley picture for main screen -->
     <ImageView
         android:id="@+id/mood_smiley"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="64dp"
-        android:tag="smileynormal"
-        android:src="@drawable/smileynormal"/>
+        android:tag="smileyhappy"
+        android:src="@drawable/smileyhappy"/>
     <!-- Main screen button to add a daily note -->
     <ImageButton
         android:id="@+id/add_note"
@@ -40,9 +40,4 @@
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@color/transparent"
         android:src="@drawable/ic_show_history"/>
-    <!-- Schedule job test button -->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="scheduleJob"/>
 </android.support.design.widget.CoordinatorLayout>

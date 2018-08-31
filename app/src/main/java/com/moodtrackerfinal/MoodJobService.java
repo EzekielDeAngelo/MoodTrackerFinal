@@ -6,6 +6,8 @@ import android.util.Log;
 
 import com.moodtrackerfinal.db.entity.MoodEntity;
 import com.moodtrackerfinal.db.repository.DataRepository;
+import com.moodtrackerfinal.view.ui.MainActivity;
+
 /** Enables the system to perform work, regardless of whether the app is active **/
 public class MoodJobService extends JobService
 {
@@ -37,6 +39,9 @@ public class MoodJobService extends JobService
                 }
                 MoodEntity mood = repository.load(8);
                 mood.setId(1);
+                repository.update(mood);
+                mood = new MoodEntity(8, 4, "");
+                mood.setId(8);
                 repository.update(mood);
                 Log.d(TAG, "Job finished");
                 jobFinished(params, false);

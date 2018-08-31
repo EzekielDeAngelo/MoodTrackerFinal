@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         swipeTouchListener();
+        scheduleJob();
         mViewModel = ViewModelProviders.of(this).get(MoodListViewModel.class);
         mViewModel.getMood().observe(this, new Observer<MoodEntity>()
         {
@@ -88,13 +89,13 @@ public class MainActivity extends AppCompatActivity
         }
     }
     // Schedule job method - Builds a jobInfo object with given criteria
-    public void scheduleJob(View view)
+    public void scheduleJob()
     {
         ComponentName componentName = new ComponentName(this, MoodJobService.class);
-        JobInfo info = new JobInfo.Builder(123,componentName).setRequiresCharging(true).setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED).setPersisted(true).setPeriodic(1 * 60 * 1000).build();
+        JobInfo info = new JobInfo.Builder(123,componentName).setRequiresCharging(true).setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED).setPersisted(true).setPeriodic(24 * 60 * 60 * 1000).build();
         JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         int resultCode = scheduler.schedule(info);
-        if (resultCode == JobScheduler.RESULT_SUCCESS)
+        if ( resultCode == JobScheduler.RESULT_SUCCESS)
         {
             Log.d(TAG, "Job scheduled");
         }
@@ -156,7 +157,7 @@ public class MainActivity extends AppCompatActivity
                 {
                     currentMoodName--;
                 }
-                setMoodName();
+                setMoodName(currentMoodName, currentMoodNote);
             }
             public void onSwipeTop()
             {
@@ -168,14 +169,14 @@ public class MainActivity extends AppCompatActivity
                 {
                     currentMoodName++;
                 }
-                setMoodName();
+                setMoodName(currentMoodName, currentMoodNote);
             }
         });
     }
     // Set mood name - Update mood of the day with current parameters
-    public void setMoodName()
+    public void setMoodName(int moodName, String moodNote)
     {
-        MoodEntity mood = new MoodEntity(8, currentMoodName, currentMoodNote);
+        MoodEntity mood = new MoodEntity(8, moodName, moodNote);
         mViewModel.update(mood);
     }
 }
